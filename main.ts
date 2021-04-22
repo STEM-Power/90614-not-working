@@ -5,15 +5,15 @@ enum TemperatureLocation {
     Ambiant
 }
 
-//%color=#F79532 icon="\uf2cb" block="MLX90614"
+//%color=#F79532 icon="\uf2c9" block="MLX90614"
 namespace MLX90614 {
     const addr = 0x5A
     const obTempAddr = 0x07
     const amTempAddr = 0x06
 
     function read16(reg: NumberFormat.UInt8BE): number {
-        pins.i2cWriteNumber(addr, reg, NumberFormat.UInt8BE, true);
-        let ret = pins.i2cReadNumber(addr, NumberFormat.UInt16LE, true);
+        pins.i2cWriteNumber(addr, reg, NumberFormat.UInt8BE, false);
+        let ret = pins.i2cReadNumber(addr, NumberFormat.Int16LE, false);
         //ret |= pins.i2cReadNumber(addr, NumberFormat.UInt16LE) << 8
         return ret
     }
